@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+            <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="taskService.selectedTask._id">
+              <div class="row">
+                <div class="input-field col-s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="taskService.selectedTask.title" placeholder="Enter the title">
+                </div>
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(taskForm)">Clean</button>
+                    <button class="btn right">Save</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table class="striped highlight black-text">
+          <thead>
+            <th>Task</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of taskService.tasks">
+              <td>{{ task.title }}</td>
+              <td>
+                <a (click)="editTask(task)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteTask(task._id, taskForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
