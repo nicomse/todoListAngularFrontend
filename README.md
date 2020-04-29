@@ -1,3 +1,7 @@
 # FrontendTodoList
 
-Start the project with npm run start
+Start the project with
+
+```bash
+npm run start
+```
